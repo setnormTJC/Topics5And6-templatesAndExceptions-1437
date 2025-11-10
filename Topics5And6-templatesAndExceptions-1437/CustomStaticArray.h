@@ -1,5 +1,6 @@
 #pragma once
 
+#include<initializer_list>
 #include<stdexcept>
 
 //#include<exception>
@@ -11,7 +12,7 @@ class CustomStaticArray
 	SomeDataType cStyleArray[maxSize];
 
 public:
-	CustomStaticArray() = delete;
+	CustomStaticArray() = default;
 	CustomStaticArray(SomeDataType initialValueOfAllArrayElements)
 	{
 		for (int i = 0; i < maxSize; ++i)
@@ -45,15 +46,47 @@ public:
 
 		std::cout << "\n";
 	}
-
-	//void reverse()
-	//{
-
-	//}
-
-	CustomStaticArray<SomeDataType> reverse()
+	/*@brief 
+	* if array = {a, b, c}, swap(0, 1) gives {b, a, c}
+	*/
+	void swap(int leftIndex, int rightIndex)
 	{
+		SomeDataType copyOfLeftElement = cStyleArray[leftIndex];
 
+		cStyleArray[leftIndex] = cStyleArray[rightIndex];
+		cStyleArray[rightIndex] = copyOfLeftElement;
+	}
+
+	/*performs SWAPS - uses less space (memory/RAM) than the "out of place" reverse*/
+	void inplaceReverse()
+	{
+		for (int i = 0; i < maxSize / 2; ++i)
+		{
+			int leftIndex = i; 
+			int rightIndex = maxSize - i -1; 
+
+			swap(leftIndex, rightIndex);
+		}
+	}
+
+	void sort()
+	{
+		//but how? 
+	}
+
+	CustomStaticArray<SomeDataType, maxSize> reverse()
+	{
+		CustomStaticArray reversedArray{}; //alternative syntax for calling default constructor 
+
+		for (int i = maxSize - 1; i >= 0; --i)
+		{
+			SomeDataType temp = cStyleArray[i]; 
+			int reversedArrayIndex = i - maxSize + 1; 
+
+			reversedArray[reversedArrayIndex] = temp; 
+		}
+		
+		return reversedArray; 
 	}
 
 };
