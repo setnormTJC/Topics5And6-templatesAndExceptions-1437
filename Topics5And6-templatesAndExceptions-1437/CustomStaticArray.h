@@ -6,13 +6,13 @@
 //#include<exception>
 
 template<typename SomeDataType, int maxSize>
-class CustomStaticArray
+class CustomStaticArray //this is a DATA structure! (a static array - one whose cannot grow or shrink)
 {
 	//C-style 
-	SomeDataType cStyleArray[maxSize];
+	SomeDataType cStyleArray[maxSize]; //not a std::vector or std::array 
 
 public:
-	CustomStaticArray() = default;
+	explicit CustomStaticArray() = default;
 	CustomStaticArray(SomeDataType initialValueOfAllArrayElements)
 	{
 		for (int i = 0; i < maxSize; ++i)
@@ -32,7 +32,7 @@ public:
 		return cStyleArray[index];
 	}
 
-	std::string getFront()
+	SomeDataType getFront()
 	{
 		return cStyleArray[0];
 	}
@@ -72,6 +72,21 @@ public:
 	void sort()
 	{
 		//but how? 
+		//THIS is (one) how:
+		for (int leftIndex = 0; leftIndex < maxSize - 1; ++leftIndex)
+		{
+			for (int rightIndex = leftIndex + 1; rightIndex < maxSize; ++rightIndex)
+			{
+				if (cStyleArray[rightIndex] < cStyleArray[leftIndex])
+				{
+					swap(leftIndex, rightIndex);
+				}
+				//else
+				//{
+				//	//do nothing
+				//}
+			}
+		}
 	}
 
 	CustomStaticArray<SomeDataType, maxSize> reverse()

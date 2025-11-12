@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6b7c5238-d62b-4fd4-808d-827b2a3dcccc}</ProjectGuid>
-    <RootNamespace>Topics5And6templatesAndExceptions1437</RootNamespace>
+    <ProjectGuid>{25d8e9d6-ffe9-4e54-8a0f-2a38b3db78e1}</ProjectGuid>
+    <RootNamespace>ClockOperatorOverloading</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,11 +123,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\client-1.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\Clock.cpp" />
+    <ClCompile Include="ClockOperatorOverloading.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CustomStaticArray.h" />
-    <ClInclude Include="demos.h" />
+    <ClInclude Include="..\..\..\..\..\Downloads\Clock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

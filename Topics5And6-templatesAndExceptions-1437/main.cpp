@@ -4,62 +4,57 @@
 #include<algorithm> //for merge
 #include<array>
 #include <iostream>
+#include<random> 
 #include<string>
 #include<vector> 
 
+#include"demos.h"
 #include"CustomStaticArray.h" //me making my own version of
 
 int main()
 {
-    //std::mer //note that there is "merge" and then there is "inplace_merge"
-    
-    //std::array object here for "inspiration" for what functions we "should" write:
-    std::array<std::string, 3> namesStdArray =
-    {
-        "Alice", "Bob", "Carol"
-    };
-    
-    
+	//std::sort() //the wheel that has already been invented
+	//CustomStaticArray<std::string, 5> names;
+	//
+	//names[0] = "Romero"; 
+	//names[1] = "Bielitz"; 
+	//names[2] = "Thomas";
+	//names[3] = "Mendez"; 
+	//names[4] = "Hahn";
+	//
+	//std::cout << "Initial state of names array: \n";
+	//names.print(" ");
 
-    std::vector<int> numsStdVector; //std::vector here just for observing static v dynamic differences 
-    
-    CustomStaticArray<int, 5> numsArray(11);
-    //numsArray.print("\t");
-    CustomStaticArray<char, 4> charArray('Z'); //char array (AKA: string)
+	//names.sort(); 
 
-    charArray[0] = 'S';
-    charArray[1] = 'e';
-    charArray[2] = 't';
-    charArray[3] = 'h';
-    //charArray = "Seth";//won't work (std::array also does not support this)
-
-    CustomStaticArray<std::string, 7> names; 
-
-    names[0] = "Alice";
-    names[1] = "Bob";
-    names[2] = "Carol";
-    names[3] = "Darth";
-    names[4] = "Eve";
-    names[5] = "Frank";
-    names[6] = "Gus";
+	//std::cout << "State of names array after sorting: \n";
+	//names.print(" ");
 
 
-    try
-    {
-        numsArray[1] = 12'334; 
 
-        //auto reversedCharArray = charArray.reverse(); 
+	constexpr int N = 100; //N stands for the Number of elements (this is VERY important "Big O Notation")
+	CustomStaticArray<int, N> arrayOfNumbers; 
 
-        //charArray.swap(0, 1); 
-        //charArray.inplaceReverse(); 
+	
+	std::mt19937 rng(std::random_device{}()); //this looks confusing, but it works
 
-        names.inplaceReverse(); 
-        names.print("\n");
-    }
+	std::uniform_int_distribution<int> dist(0, N);
 
-    catch (const std::exception& e)
-    {
-        std::cout << e.what() << "\n";
-    }
+	for (int i = 0; i < N; ++i)
+	{
+		//std::cout << dist(rng) << "\n";
+		arrayOfNumbers[i] = dist(rng);
+	}
+
+	std::cout << "Initial state of the array of random numbers (between 0 and 100): \n";
+	arrayOfNumbers.print(" ");
+
+	arrayOfNumbers.sort(); //a class OWNS its data
+
+	std::cout << "State of the array of random numbers after sorting: \n";
+	arrayOfNumbers.print(" ");
+
+
+	//std::sort(nums.begin(), nums.end(0))
 }
 

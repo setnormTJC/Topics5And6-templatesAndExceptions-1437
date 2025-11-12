@@ -15,15 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ClockOperatorOverloading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Downloads\Clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Downloads\client-1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CustomStaticArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="demos.h">
+    <ClInclude Include="..\..\..\..\..\Downloads\Clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
